@@ -814,6 +814,12 @@ function buildToc(article) {
     heads.forEach((h, i) => {
       if (h.offsetParent !== null && h.getBoundingClientRect().top <= line) active = i;
     });
+    // Al llegar al final, los últimos apartados no suben hasta arriba: marca el último visible
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      for (let i = heads.length - 1; i >= 0; i--) {
+        if (heads[i].offsetParent !== null && heads[i].getBoundingClientRect().top < window.innerHeight) { active = i; break; }
+      }
+    }
     links.forEach((a, i) => {
       if (i === active) a.setAttribute("aria-current", "true");
       else a.removeAttribute("aria-current");
