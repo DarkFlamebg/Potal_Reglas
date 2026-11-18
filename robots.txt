@@ -1,0 +1,5 @@
+# Permite a los buscadores recorrer todo el portal
+User-agent: *
+Allow: /
+
+Sitemap: https://TU-DOMINIO/sitemap.xml
